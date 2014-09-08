@@ -1,7 +1,5 @@
 Spree::Core::Engine.routes.draw do
-  namespace :spree do
-    resources :people
-  end
+  resources :people
 
   # Add your extension routes here
 end
