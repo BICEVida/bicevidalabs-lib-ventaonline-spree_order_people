@@ -1,6 +1,4 @@
 Spree::Core::Engine.routes.draw do
-  resources :orders, only: :none do
-    resources :people
-  end
+  resources :people
   # Add your extension routes here
 end
