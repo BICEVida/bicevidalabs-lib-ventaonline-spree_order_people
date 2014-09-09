@@ -1,4 +1,4 @@
-class Spree::PeopleController < ApplicationController
+class Spree::PeopleController < Spree::StoreController
   def new
   end
 
