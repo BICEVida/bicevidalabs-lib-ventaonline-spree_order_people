@@ -1,7 +1,14 @@
-SpreeOrderPeople
+Spree Order People
 ================
 
-Introduction goes here.
+This Spree extension adds the possibility of associating People (`Spree::Person` objects) to a `Spree::Order`. The idea is to include third-people "somehow interested" in the order purchase.
+
+As a way of claryfing the gem purpose, examples of people would be:
+
+- Beneficiaries of a purchase
+- Passengers if the purchase has to do with traveling
+
+Each `Spree::Person` is also associated to a `Spree::Address` object, in order to specify his/her address. Given that a `Spree::Address` instance already has name and contact info of someone, customization of this model is recommended.
 
 Installation
 ------------
@@ -9,8 +16,9 @@ Installation
 Add spree_order_people to your Gemfile:
 
 ```ruby
-gem 'spree_order_people'
+gem 'spree_order_people', git: 'https://gitlab.acid.cl/sivicencio/spree_order_people.git', branch: '2-3-stable'
 ```
+Note: this gem follows the `branch`pattern of any Spree extension, so it is advised to do specify the last stable branch.
 
 Bundle your dependencies and run the installation generator:
 
@@ -18,6 +26,9 @@ Bundle your dependencies and run the installation generator:
 bundle
 bundle exec rails g spree_order_people:install
 ```
+The installer will add some migrations to your Spree project, and will ask you to run them.
+
+Now you are ready to use the `Spree::Person` model as needed.
 
 Testing
 -------
@@ -36,4 +47,4 @@ Simply add this require statement to your spec_helper:
 require 'spree_order_people/factories'
 ```
 
-Copyright (c) 2014 [name of extension creator], released under the New BSD License
+Copyright (c) 2014 Sebastián Vicencio, released under the New BSD License

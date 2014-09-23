@@ -1,0 +1,8 @@
+<%= simple_form_for @person do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :firstname %>
+  <%= f.input :lastname %>
+  <%= f.input :secondlastname %>
+  <%= f.input :email %>
+  <%= f.button :submit %>
+<% end %>
