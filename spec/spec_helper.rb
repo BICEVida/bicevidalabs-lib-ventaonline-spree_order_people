@@ -30,6 +30,7 @@ require 'spree/testing_support/controller_requests'
 require 'spree/testing_support/factories'
 require 'spree/testing_support/url_helpers'
 
+
 # Requires factories defined in lib/spree_order_people/factories.rb
 require 'spree_order_people/factories'
 require 'shoulda/matchers'
@@ -46,7 +47,9 @@ RSpec.configure do |config|
   #
   # visit spree.admin_path
   # current_path.should eql(spree.products_path)
+  config.include Spree::TestingSupport::ControllerRequests
   config.include Spree::TestingSupport::UrlHelpers
+  config.include Devise::TestHelpers, :type => :controller
 
   # == Mock Framework
   #
