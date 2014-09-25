@@ -2,18 +2,13 @@ require 'spec_helper'
 
 describe Spree::PeopleController do
 
-  def valid_attributes
-    FactoryGirl.attributes_for(:person)
-  end
-
-  def invalid_attributes
-    FactoryGirl.attributes_for(:invalid_person).merge({firstname: ''})
-  end
+  let(:valid_attributes) { FactoryGirl.attributes_for(:person) }
+  let(:invalid_attributes) { FactoryGirl.attributes_for(:invalid_person).merge({firstname: ''}) }
+  let(:person) { FactoryGirl.create(:person) }
 
 
   describe 'GET show' do
     it "return 200 status code" do
-      person = create(:person)
       spree_get :show, {id: person.id}
       expect(response.status).to eq(200)
     end
@@ -64,7 +59,6 @@ describe Spree::PeopleController do
 
   describe "GET edit" do
     it "assigns the requested person as @person" do
-      person = create(:person)
       spree_get :edit, {id: person.id}
       expect(assigns(:person)).to eq(person)
     end
@@ -73,18 +67,17 @@ describe Spree::PeopleController do
   describe "PUT update" do
     describe "with valid params" do
       it "updates the requested person" do
-        person = create(:person)
         spree_put :update, {id: person.id, person: { firstname: "AnotherName" }}
+        person.reload
+        expect(person.firstname).to eq('AnotherName')
       end
 
       it "assigns the requested person as @person" do
-        person = create(:person)
         spree_put :update, {id: person.id, person: valid_attributes}
         expect(assigns(:person)).to eq(person)
       end
 
       it "redirects to the person" do
-        person = create(:person)
         spree_put :update, {id: person.id, person: valid_attributes}
         expect(response).to redirect_to(person)
       end
@@ -92,17 +85,11 @@ describe Spree::PeopleController do
 
     describe "with invalid params" do
       it "assigns the requested person as @person" do
-        person = create(:person)
-        # Trigger the behavior that occurs when invalid params are submitted
-        #User.any_instance.stub(:save).and_return(false)
         spree_put :update, {id: person.id, person: invalid_attributes}
         expect(assigns(:person)).to eq(person)
       end
 
       it "re-renders the 'edit' template" do
-        person = create(:person)
-        # Trigger the behavior that occurs when invalid params are submitted
-        #User.any_instance.stub(:save).and_return(false)
         spree_put :update, {id: person.id, person: invalid_attributes}
         expect(response).to render_template("edit")
       end

@@ -7,4 +7,8 @@ class Spree::Person < Spree::Base
   def full_name
     (firstname.strip + ' ' + lastname.strip + ' ' + secondlastname.strip).strip
   end
+
+  def person_params
+    params.require(:person).permit(:firstname, :lastname, :secondlastname, :email, :birthdate, :phone, :cellular, :order_id, :address_id)
+  end
 end
