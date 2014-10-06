@@ -1,6 +1,6 @@
 class Spree::Person < Spree::Base
-  belongs_to :order
-  belongs_to :address
+  belongs_to :order, class_name: 'Spree::Order'
+  belongs_to :address, class_name: 'Spree::Address'
 
   validates_presence_of :firstname, :lastname, :email
 
