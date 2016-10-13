@@ -1,3 +1,5 @@
+# bicevidalabs-lib-ventaonline-spree_order_people
+
 SpreeOrderPeople
 ================
 
@@ -37,3 +39,5 @@ require 'spree_order_people/factories'
 ```
 
 Copyright (c) 2014 [name of extension creator], released under the New BSD License
+=======
+
