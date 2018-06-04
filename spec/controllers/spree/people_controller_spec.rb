@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe Spree::PeopleController do
 
-  let(:valid_attributes) { FactoryGirl.attributes_for(:person) }
-  let(:invalid_attributes) { FactoryGirl.attributes_for(:invalid_person).merge({firstname: ''}) }
-  let(:person) { FactoryGirl.create(:person) }
+  let(:valid_attributes) { FactoryBot.attributes_for(:person) }
+  let(:invalid_attributes) { FactoryBot.attributes_for(:invalid_person).merge({firstname: ''}) }
+  let(:person) { FactoryBot.create(:person) }
 
 
   describe 'GET show' do
